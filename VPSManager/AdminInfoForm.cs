@@ -8,16 +8,13 @@ namespace VPSManager
     public class AdminInfoForm : Form
     {
         private Panel titleBar;
-
         public AdminInfoForm()
         {
             InitializeComponent();
         }
-
         private void InitializeComponent()
         {
             this.SuspendLayout();
-
             // Form settings
             this.Text = "Thông tin Admin";
             this.Size = new Size(450, 350);
@@ -25,7 +22,6 @@ namespace VPSManager
             this.FormBorderStyle = FormBorderStyle.None;
             this.BackColor = Color.FromArgb(30, 30, 30);
             this.DoubleBuffered = true;
-
             // Title Bar
             titleBar = new Panel
             {
@@ -34,7 +30,6 @@ namespace VPSManager
                 BackColor = Color.FromArgb(45, 45, 48)
             };
             titleBar.MouseDown += TitleBar_MouseDown;
-
             Label lblTitle = new Label
             {
                 Text = "ℹ️ Thông tin Admin",
@@ -43,7 +38,6 @@ namespace VPSManager
                 Location = new Point(15, 10),
                 AutoSize = true
             };
-
             Button btnClose = new Button
             {
                 Text = "✕",
@@ -58,9 +52,7 @@ namespace VPSManager
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 17, 35);
             btnClose.Click += (s, e) => this.Close();
-
             titleBar.Controls.AddRange(new Control[] { lblTitle, btnClose });
-
             // Content Panel
             Panel contentPanel = new Panel
             {
@@ -68,36 +60,33 @@ namespace VPSManager
                 Size = new Size(410, 270),
                 BackColor = Color.FromArgb(37, 37, 38)
             };
-
             // Logo/Icon
             Label lblIcon = new Label
             {
                 Text = "🖥️",
-                Font = new Font("Segoe UI", 48),
-                Location = new Point(165, 10),
+                Font = new Font("Segoe UI", 35),
+                ForeColor = Color.White,
+                Location = new Point(171, 10),
                 AutoSize = true
             };
-
             // App Name
             Label lblAppName = new Label
             {
                 Text = "VPS-Manager",
                 ForeColor = Color.FromArgb(0, 122, 204),
                 Font = new Font("Segoe UI", 18, FontStyle.Bold),
-                Location = new Point(130, 80),
+                Location = new Point(115, 80),
                 AutoSize = true
             };
-
             // Version
             Label lblVersion = new Label
             {
                 Text = "Phiên bản: 1.0.0",
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 10),
-                Location = new Point(160, 115),
+                Location = new Point(150, 115),
                 AutoSize = true
             };
-
             // Separator
             Panel separator = new Panel
             {
@@ -105,7 +94,6 @@ namespace VPSManager
                 Size = new Size(370, 1),
                 BackColor = Color.FromArgb(70, 70, 70)
             };
-
             // Admin Info
             Label lblAdminTitle = new Label
             {
@@ -115,7 +103,6 @@ namespace VPSManager
                 Location = new Point(20, 160),
                 AutoSize = true
             };
-
             Label lblAdmin = new Label
             {
                 Text = "Admin: VPS-Admin",
@@ -124,7 +111,6 @@ namespace VPSManager
                 Location = new Point(20, 190),
                 AutoSize = true
             };
-
             Label lblContact = new Label
             {
                 Text = "📧 Email: admin@vpsmanager.com",
@@ -133,7 +119,6 @@ namespace VPSManager
                 Location = new Point(20, 215),
                 AutoSize = true
             };
-
             Label lblTelegram = new Label
             {
                 Text = "📱 Telegram: @vpsmanager",
@@ -142,26 +127,22 @@ namespace VPSManager
                 Location = new Point(20, 240),
                 AutoSize = true
             };
-
             // Copyright
             Label lblCopyright = new Label
             {
                 Text = "© 2024 VPS-Manager. All rights reserved.",
                 ForeColor = Color.Gray,
                 Font = new Font("Segoe UI", 8),
-                Location = new Point(110, 320),
+                Location = new Point(105, 320),
                 AutoSize = true
             };
-
             contentPanel.Controls.AddRange(new Control[] {
                 lblIcon, lblAppName, lblVersion, separator,
                 lblAdminTitle, lblAdmin, lblContact, lblTelegram
             });
-
             this.Controls.AddRange(new Control[] { titleBar, contentPanel, lblCopyright });
             this.ResumeLayout(false);
         }
-
         // Draggable title bar
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -169,7 +150,6 @@ namespace VPSManager
         private static extern bool ReleaseCapture();
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
-
         private void TitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
